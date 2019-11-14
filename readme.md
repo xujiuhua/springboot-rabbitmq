@@ -79,5 +79,5 @@ basicNack：可以一次拒绝N条消息，客户端可以设置basicNack方法�
 
 [慕课网消息100%投递](https://www.imooc.com/video/17854)
 
-![rabbitmq100%.png](doc/rabbitmq100%.png)
+![rabbitmq100%.png](https://github.com/xujiuhua/springboot-rabbitmq/blob/master/doc/rabbitmq100%25.png)
 
