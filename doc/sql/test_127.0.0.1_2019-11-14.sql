@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.5-10.3.16-MariaDB-log)
 # Database: test
-# Generation Time: 2019-11-14 05:58:56 +0000
+# Generation Time: 2019-11-14 12:44:37 +0000
 # ************************************************************
 
 
@@ -33,8 +33,9 @@ CREATE TABLE `broker_message_log` (
   `next_retry` datetime DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `update_time` datetime DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 0 COMMENT '0-投递中；1-投递成功；2-投递失败',
-  `return_back` varchar(200) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 0 COMMENT '0-投递中；1-投递成功；2-投递失败；4-return_call_back',
+  `return_back` varchar(1000) DEFAULT NULL,
+  `cause` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
