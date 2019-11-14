@@ -1,0 +1,66 @@
+server:
+  port: 8083
+
+# 服务器配置
+spring:
+  application:
+    name: rabbitmq-hello-sending
+
+  # rabbitmq连接参数
+  rabbitmq:
+    host: 10.211.55.17
+    port: 5672
+    username: full_access
+    password: s3crEt
+    virtual-host: /vhost_hello
+    # 开启发送确认
+    publisher-confirm-type: correlated
+    # 开启发送失败退回
+    publisher-returns: true
+    # 开启ACK
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
+        prefetch: 1
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.alibaba.druid.pool.DruidDataSource
+    # druid 配置
+    druid:
+      #初始化连接大小
+      initialSize: 4
+      #最小空闲连接数
+      minIdle: 3
+      #最大连接数
+      maxActive: 5
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.example.entity
+  global-config:
+    # 数据库相关配置
+    db-config:
+      #主键类型  AUTO:"数据库ID自增", INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: id_worker
+      #驼峰下划线转换
+      table-underline: true
+      #数据库大写下划线转换
+      #capital-mode: true
+      #序列接口实现类配置
+      #key-generator: com.baomidou.springboot.xxx
+      #逻辑删除配置
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+logging:
+  level:
+    com.exampple: trace
+    root: info
